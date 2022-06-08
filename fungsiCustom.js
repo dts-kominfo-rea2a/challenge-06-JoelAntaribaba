@@ -26,7 +26,7 @@ const bacaData = (fnCallback) => {
     } else {
       const cvtData = JSON.parse(data);
       cvtData.message.slice(5, 10);
-      console.log(cvtData.message.slice(5, 10));
+      // console.log(cvtData.message.slice(5, 10));
     }
   });
 
@@ -35,7 +35,7 @@ const bacaData = (fnCallback) => {
       console.log(err);
     } else {
       const cvtData = JSON.parse(data);
-      console.log(cvtData[0].message.slice(5, 10));
+      // console.log(cvtData[0].message.slice(5, 10));
     }
   });
 
@@ -44,9 +44,12 @@ const bacaData = (fnCallback) => {
       console.log(err);
     } else {
       const cvtData = JSON.parse(data);
-      console.log(cvtData[0].data.message.slice(5, 10));
+      // console.log(cvtData[0].data.message.slice(5, 10));
     }
   });
+
+  let newArr = [newFile1, newFile2, newFile3];
+  fnCallback(newArr);
 };
 
 // ! JANGAN DIMODIFIKASI
