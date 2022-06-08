@@ -21,30 +21,30 @@ let modifyFile3 = (val) => {
 // gunakan variabel file1, file2, dan file3
 
 const bacaData = (fnCallback) => {
-  fs.readFile(file1, "utf8", (err, data) => {
+  let newFile1 = fs.readFile(file1, "utf8", (err, data) => {
     if (err) {
       console.log(err);
     } else {
       const cvtData = JSON.parse(data);
-      cvtData.message.slice(5, 10);
+      fnCallback(cvtData.message.slice(5, 10));
     }
   });
 
-  fs.readFile(file2, "utf8", (err, data) => {
+  let newFile2 = fs.readFile(file2, "utf8", (err, data) => {
     if (err) {
       console.log(err);
     } else {
       const cvtData = JSON.parse(data);
-      cvtData[0].message.slice(5, 10);
+      fnCallback(cvtData[0].message.slice(5, 10));
     }
   });
 
-  fs.readFile(file3, "utf8", (err, data) => {
+  let newFile3 = fs.readFile(file3, "utf8", (err, data) => {
     if (err) {
       console.log(err);
     } else {
       const cvtData = JSON.parse(data);
-      cvtData[0].data.message.slice(5, 10);
+      fnCallback(cvtData[0].data.message.slice(5, 10));
     }
   });
 };
