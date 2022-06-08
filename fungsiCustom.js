@@ -1,5 +1,6 @@
 // TODO: import module bila dibutuhkan di sini
 const fs = require("fs");
+let newArr = [];
 // ! JANGAN DIMODIFIKASI
 let file1 = "./data1.json";
 let file2 = "./data2.json";
@@ -20,36 +21,32 @@ let modifyFile3 = (val) => {
 // gunakan variabel file1, file2, dan file3
 
 const bacaData = (fnCallback) => {
-  const newFile1 = fs.readFile(file1, "utf8", (err, data) => {
+  fs.readFile(file1, "utf8", (err, data) => {
     if (err) {
       console.log(err);
     } else {
       const cvtData = JSON.parse(data);
       cvtData.message.slice(5, 10);
-      // console.log(cvtData.message.slice(5, 10));
     }
   });
 
-  const newFile2 = fs.readFile(file2, "utf8", (err, data) => {
+  fs.readFile(file2, "utf8", (err, data) => {
     if (err) {
       console.log(err);
     } else {
       const cvtData = JSON.parse(data);
-      // console.log(cvtData[0].message.slice(5, 10));
+      cvtData[0].message.slice(5, 10);
     }
   });
 
-  const newFile3 = fs.readFile(file3, "utf8", (err, data) => {
+  fs.readFile(file3, "utf8", (err, data) => {
     if (err) {
       console.log(err);
     } else {
       const cvtData = JSON.parse(data);
-      // console.log(cvtData[0].data.message.slice(5, 10));
+      cvtData[0].data.message.slice(5, 10);
     }
   });
-
-  let newArr = [newFile1, newFile2, newFile3];
-  fnCallback(newArr);
 };
 
 // ! JANGAN DIMODIFIKASI
