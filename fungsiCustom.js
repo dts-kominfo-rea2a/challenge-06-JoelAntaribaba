@@ -26,7 +26,7 @@ const bacaData = (fnCallback) => {
       console.log(err);
     } else {
       const cvtData = JSON.parse(data);
-      fnCallback(cvtData.message.slice(5, 10));
+      fnCallback(cvtData.message.slice(5));
     }
   });
 
@@ -35,7 +35,7 @@ const bacaData = (fnCallback) => {
       console.log(err);
     } else {
       const cvtData = JSON.parse(data);
-      fnCallback(cvtData[0].message.slice(5, 10));
+      fnCallback(cvtData[0].message.slice(5));
     }
   });
 
@@ -44,7 +44,7 @@ const bacaData = (fnCallback) => {
       console.log(err);
     } else {
       const cvtData = JSON.parse(data);
-      fnCallback(cvtData[0].data.message.slice(5, 10));
+      fnCallback(cvtData[0].data.message.slice(5));
     }
   });
 };
