@@ -1,6 +1,6 @@
 // TODO: import module bila dibutuhkan di sini
 const fs = require("fs");
-let newArr = [];
+// let newArr = [];
 // ! JANGAN DIMODIFIKASI
 let file1 = "./data1.json";
 let file2 = "./data2.json";
@@ -21,31 +21,37 @@ let modifyFile3 = (val) => {
 // gunakan variabel file1, file2, dan file3
 
 const bacaData = (fnCallback) => {
-  let newFile1 = fs.readFile(file1, "utf8", (err, data) => {
+  fs.readFile(file1, "utf8", (err, data1) => {
     if (err) {
       console.log(err);
-    } else {
-      const cvtData = JSON.parse(data);
-      fnCallback(cvtData.message.slice(5));
     }
-  });
 
-  let newFile2 = fs.readFile(file2, "utf8", (err, data) => {
-    if (err) {
-      console.log(err);
-    } else {
-      const cvtData = JSON.parse(data);
-      fnCallback(cvtData[0].message.slice(5));
-    }
-  });
+    fs.readFile(file2, "utf8", (err, data2) => {
+      if (err) {
+        console.log(err);
+      }
 
-  let newFile3 = fs.readFile(file3, "utf8", (err, data) => {
-    if (err) {
-      console.log(err);
-    } else {
-      const cvtData = JSON.parse(data);
-      fnCallback(cvtData[0].data.message.slice(5));
-    }
+      fs.readFile(file3, "utf8", (err, data3) => {
+        if (err) {
+          console.log(err);
+        }
+        const getJson1 = JSON.parse(data1);
+        const getJson2 = JSON.parse(data2);
+        const getJson3 = JSON.parse(data3);
+
+        const cvtData1 = getJson1.message;
+        const cvtData2 = getJson2[0].message;
+        const cvtData3 = getJson3[0].data.message;
+
+        // console.log(getJson1, getJson2, getJson3);
+        // console.log(cvtData1, cvtData2, cvtData3);
+
+        let files = new Array(cvtData1, cvtData2, cvtData3);
+        let val = files.map((element) => (element.length > 4 ? element.slice(4).trim() : element));
+
+        fnCallback(val);
+      });
+    });
   });
 };
 
